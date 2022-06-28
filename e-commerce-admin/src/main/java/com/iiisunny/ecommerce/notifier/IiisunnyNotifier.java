@@ -1,21 +1,24 @@
 package com.iiisunny.ecommerce.notifier;
 
+import com.iiisunny.ecommerce.advice.GlobalExceptionAdvice;
 import de.codecentric.boot.admin.server.domain.entities.Instance;
 import de.codecentric.boot.admin.server.domain.entities.InstanceRepository;
 import de.codecentric.boot.admin.server.domain.events.InstanceEvent;
 import de.codecentric.boot.admin.server.domain.events.InstanceStatusChangedEvent;
 import de.codecentric.boot.admin.server.notify.AbstractEventNotifier;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 /**
  * <h1>自定义告警</h1>
  * */
-@Slf4j
 @Component
 @SuppressWarnings("all")
 public class IiisunnyNotifier extends AbstractEventNotifier {
+
+    private static final Logger LOG = LoggerFactory.getLogger(IiisunnyNotifier.class);
 
     protected IiisunnyNotifier(InstanceRepository repository) {
         super(repository);
@@ -30,11 +33,11 @@ public class IiisunnyNotifier extends AbstractEventNotifier {
         return Mono.fromRunnable(() -> {
 
             if (event instanceof InstanceStatusChangedEvent) {
-                log.info("Instance Status Change: [{}], [{}], [{}]",
+                LOG.info("Instance Status Change: [{}], [{}], [{}]",
                         instance.getRegistration().getName(), event.getInstance(),
                         ((InstanceStatusChangedEvent) event).getStatusInfo().getStatus());
             } else {
-                log.info("Instance Info: [{}], [{}], [{}]",
+                LOG.info("Instance Info: [{}], [{}], [{}]",
                         instance.getRegistration().getName(), event.getInstance(),
                         event.getType());
             }
