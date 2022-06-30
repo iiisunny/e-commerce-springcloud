@@ -11,6 +11,11 @@ public class LoginUserInfo {
     /** 用户名 */
     private String username;
 
+    public LoginUserInfo(Long id, String username) {
+        this.id = id;
+        this.username = username;
+    }
+
     public Long getId() {
         return id;
     }
