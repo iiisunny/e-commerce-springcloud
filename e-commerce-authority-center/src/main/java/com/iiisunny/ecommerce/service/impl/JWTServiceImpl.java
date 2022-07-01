@@ -86,7 +86,7 @@ public class JWTServiceImpl implements IJWTService {
 
     @Override
     public String registerUserAndGenerateToken(UsernameAndPassword usernameAndPassword) throws Exception {
-        
+
         // 先去校验用户名是否存在，如果存在就不能重复注册
         EcommerceUser oldUser = ecommerceUserDao.findByUsername(
                 usernameAndPassword.getUsername()
