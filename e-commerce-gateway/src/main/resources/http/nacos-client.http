@@ -1,0 +1,5 @@
+### 查询服务
+GET http://127.0.0.1:9001/iiisunny/ecommerce-nacos-client/nacos-client/service-instance?serviceId=e-commerce-gateway
+Accept: application/json
+e-commerce-user: xxx.xxxxxx.xxxx-xxxxx-xxxx-xxx-xxx-xxx--xx-xx-xx
+token: iiisunny
