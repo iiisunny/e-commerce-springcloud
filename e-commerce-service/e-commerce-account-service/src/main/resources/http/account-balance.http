@@ -1,0 +1,14 @@
+### 获取当前用户余额信息
+GET http://127.0.0.1:9001/iiisunny/ecommerce-account-service/balance/current-balance
+Accept: application/json
+e-commerce-user: xxx.xxxxx.xxxx-xxxx-xxx-xxx-xx
+
+### 扣减用户余额
+PUT http://127.0.0.1:9001/iiisunny/ecommerce-account-service/balance/deduct-balance
+Content-Type: application/json
+e-commerce-user: xxx.xxxxx.xxxx-xxxx-xxx-xxx-xx
+
+{
+  "userId": 10,
+  "balance": 2000
+}

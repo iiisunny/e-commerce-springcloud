@@ -1,0 +1,43 @@
+### 创建用户地址信息
+POST http://127.0.0.1:9001/iiisunny/ecommerce-account-service/address/create-address
+Content-Type: application/json
+e-commerce-user: xxx.xxxxx.xxxx-xxxx-xxx-xxx-xx
+
+{
+  "userId": 10,
+  "addressItems": [
+    {
+      "username": "xxx",
+      "phone": "16600000001",
+      "province": "上海市",
+      "city": "上海市",
+      "addressDetail": "闵行区"
+    }
+  ]
+}
+
+### 当前登录用户地址信息
+GET http://127.0.0.1:9001/iiisunny/ecommerce-account-service/address/current-address
+Accept: application/json
+e-commerce-user: xxx.xxxxx.xxxx-xxxx-xxx-xxx-xx
+
+### 通过 id 获取用户地址信息
+GET http://127.0.0.1:9001/iiisunny/ecommerce-account-service/address/address-info?id=2
+Accept: application/json
+e-commerce-user: xxx.xxxxx.xxxx-xxxx-xxx-xxx-xx
+
+### 获取用户地址信息
+POST http://127.0.0.1:9001/iiisunny/ecommerce-account-service/address/address-info-by-table-id
+Content-Type: application/json
+e-commerce-user: xxx.xxxxx.xxxx-xxxx-xxx-xxx-xx
+
+{
+  "ids": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    }
+  ]
+}
