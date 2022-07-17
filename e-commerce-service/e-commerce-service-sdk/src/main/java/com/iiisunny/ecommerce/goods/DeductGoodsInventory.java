@@ -12,15 +12,15 @@ public class DeductGoodsInventory {
     @ApiModelProperty(value = "分页简单商品信息")
     private Long goodsId;
 
-    @ApiModelProperty(value = "是否有更多的商品（分页）")
-    private Boolean hasMore;
+    @ApiModelProperty(value = "扣减个数")
+    private Integer count;
 
     public DeductGoodsInventory() {
     }
 
-    public DeductGoodsInventory(Long goodsId, Boolean hasMore) {
+    public DeductGoodsInventory(Long goodsId, Integer count) {
         this.goodsId = goodsId;
-        this.hasMore = hasMore;
+        this.count = count;
     }
 
     public Long getGoodsId() {
@@ -31,11 +31,11 @@ public class DeductGoodsInventory {
         this.goodsId = goodsId;
     }
 
-    public Boolean getHasMore() {
-        return hasMore;
+    public Integer getCount() {
+        return count;
     }
 
-    public void setHasMore(Boolean hasMore) {
-        this.hasMore = hasMore;
+    public void setCount(Integer count) {
+        this.count = count;
     }
 }

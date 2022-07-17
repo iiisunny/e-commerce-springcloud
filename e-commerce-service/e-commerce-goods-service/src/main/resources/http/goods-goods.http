@@ -1,0 +1,56 @@
+### 根据 TableId 查询详细商品信息
+POST http://127.0.0.1:9001/iiisunny/ecommerce-goods-service/goods/goods-info
+Content-Type: application/json
+e-commerce-user: xxx.xxxxx.xxxx-xxxx-xxx-xxx-xx
+
+{
+  "ids": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    }
+  ]
+}
+
+
+### 根据分页查询简单商品信息
+GET http://127.0.0.1:9001/iiisunny/ecommerce-goods-service/goods/page-simple-goods-info?page=2
+Accept: application/json
+e-commerce-user: xxx.xxxxx.xxxx-xxxx-xxx-xxx-xx
+
+### 根据 TableId 查询简单商品信息: 完整的 goods cache
+### 第二步验证, 删掉 cache
+### 第三步验证, 删除 cache 中其中一个商品
+POST http://127.0.0.1:9001/iiisunny/ecommerce-goods-service/goods/simple-goods-info
+Content-Type: application/json
+e-commerce-user: xxx.xxxxx.xxxx-xxxx-xxx-xxx-xx
+
+{
+  "ids": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    }
+  ]
+}
+
+
+### 扣减商品库存
+PUT http://127.0.0.1:9001/iiisunny/ecommerce-goods-service/goods/deduct-goods-inventory
+Content-Type: application/json
+e-commerce-user: xxx.xxxxx.xxxx-xxxx-xxx-xxx-xx
+
+[
+  {
+    "goodsId": 1,
+    "count": 100
+  },
+  {
+    "goodsId": 2,
+    "count": 34
+  }
+]
