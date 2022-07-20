@@ -1,0 +1,13 @@
+### 查询服务实例信息
+GET http://127.0.0.1:8000/ecommerce-nacos-client/nacos-client/service-instance
+Accept: application/json
+
+### 动态从 Nacos Server 中获取配置信息
+GET http://127.0.0.1:8000/ecommerce-nacos-client/nacos-client/project-config
+Accept: application/json
+
+### 查看 Sleuth 跟踪信息
+GET http://127.0.0.1:9001/iiisunny/ecommerce-nacos-client/sleuth/trace-info
+Accept: application/json
+e-commerce-user: xxx.xxxxx.xxxx-xxxx-xxx-xxx-xx
+token: iiisunny
