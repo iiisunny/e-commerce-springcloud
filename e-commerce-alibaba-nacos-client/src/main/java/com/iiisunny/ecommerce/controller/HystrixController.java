@@ -7,6 +7,7 @@ import com.iiisunny.ecommerce.service.hystrix.CacheHystrixCommandAnnotation;
 import com.iiisunny.ecommerce.service.hystrix.NacosClientHystrixCommand;
 import com.iiisunny.ecommerce.service.hystrix.NacosClientHystrixObservableCommand;
 import com.iiisunny.ecommerce.service.hystrix.UseHystrixCommandAnnotation;
+import com.iiisunny.ecommerce.service.hystrix.request_merge.NacosClientCollapseCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.client.ServiceInstance;
@@ -224,5 +225,64 @@ public class HystrixController {
                 cacheHystrixCommandAnnotation.useCacheByAnnotation03(serviceId);
         // 这里有第四次调用
         return cacheHystrixCommandAnnotation.useCacheByAnnotation03(serviceId);
+    }
+
+    /**
+     * <h2>编程方式实现请求合并</h2>
+     * */
+    @GetMapping("/request-merge")
+    public void requestMerge() throws Exception {
+
+        // 前三个请求会被合并
+        NacosClientCollapseCommand collapseCommand01 = new NacosClientCollapseCommand(
+                nacosClientService, "e-commerce-nacos-client1");
+        NacosClientCollapseCommand collapseCommand02 = new NacosClientCollapseCommand(
+                nacosClientService, "e-commerce-nacos-client2");
+        NacosClientCollapseCommand collapseCommand03 = new NacosClientCollapseCommand(
+                nacosClientService, "e-commerce-nacos-client3");
+
+        Future<List<ServiceInstance>> future01 = collapseCommand01.queue();
+        Future<List<ServiceInstance>> future02 = collapseCommand02.queue();
+        Future<List<ServiceInstance>> future03 = collapseCommand03.queue();
+
+        future01.get();
+        future02.get();
+        future03.get();
+
+        Thread.sleep(2000);
+
+        // 过了合并的时间窗口, 第四个请求单独发起
+        NacosClientCollapseCommand collapseCommand04 = new NacosClientCollapseCommand(
+                nacosClientService, "e-commerce-nacos-client4");
+        Future<List<ServiceInstance>> future04 = collapseCommand04.queue();
+        future04.get();
+    }
+
+    /**
+     * <h2>注解的方式实现请求合并</h2>
+     * */
+    @GetMapping("/request-merge-annotation")
+    public void requestMergeAnnotation() throws Exception {
+
+        Future<List<ServiceInstance>> future01 = nacosClientService.findNacosClientInfo(
+                "e-commerce-nacos-client1"
+        );
+        Future<List<ServiceInstance>> future02 = nacosClientService.findNacosClientInfo(
+                "e-commerce-nacos-client2"
+        );
+        Future<List<ServiceInstance>> future03 = nacosClientService.findNacosClientInfo(
+                "e-commerce-nacos-client3"
+        );
+
+        future01.get();
+        future02.get();
+        future03.get();
+
+        Thread.sleep(2000);
+
+        Future<List<ServiceInstance>> future04 = nacosClientService.findNacosClientInfo(
+                "e-commerce-nacos-client4"
+        );
+        future04.get();
     }
 }
