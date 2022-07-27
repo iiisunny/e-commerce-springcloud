@@ -1,0 +1,31 @@
+### 获取 Token
+POST http://127.0.0.1:9001/iiisunny/ecommerce-nacos-client/communication/token-by-feign
+Content-Type: application/json
+e-commerce-user: xxx.xxxxxx.xxxx-xxxxx-xxxx-xxx-xxx-xxx--xx-xx-xx
+token: iiisunny
+
+{
+  "username": "xxxxx",
+  "password": "xxxxx"
+}
+
+
+### 根据提供的 serviceId 获取实例信息
+GET http://127.0.0.1:9001/iiisunny/ecommerce-nacos-client/hystrix/hystrix-command-annotation?serviceId=e-commerce-nacos-client
+Content-Type: application/json
+e-commerce-user: xxx.xxxxxx.xxxx-xxxxx-xxxx-xxx-xxx-xxx--xx-xx-xx
+token: iiisunny
+
+
+### 根据提供的 serviceId 获取实例信息
+GET http://127.0.0.1:9001/iiisunny/ecommerce-nacos-client/hystrix/simple-hystrix-command?serviceId=e-commerce-nacos-client
+Content-Type: application/json
+e-commerce-user: xxx.xxxxxx.xxxx-xxxxx-xxxx-xxx-xxx-xxx--xx-xx-xx
+token: iiisunny
+
+
+### 根据提供的 serviceId 获取实例信息
+GET http://127.0.0.1:9001/iiisunny/ecommerce-nacos-client/hystrix/hystrix-observable-command?serviceId=e-commerce-nacos-client
+Content-Type: application/json
+e-commerce-user: xxx.xxxxx.xxxx-xxxx-xxx-xxx-xx
+token: iiisunny

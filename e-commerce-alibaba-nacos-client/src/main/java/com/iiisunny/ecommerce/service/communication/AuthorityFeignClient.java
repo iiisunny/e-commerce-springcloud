@@ -1,5 +1,7 @@
 package com.iiisunny.ecommerce.service.communication;
 
+import com.iiisunny.ecommerce.service.communication.hystrix.AuthorityFeignClientFallback;
+import com.iiisunny.ecommerce.service.communication.hystrix.AuthorityFeignClientFallbackFactory;
 import com.iiisunny.ecommerce.vo.JwtToken;
 import com.iiisunny.ecommerce.vo.UsernameAndPassword;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -11,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * <h1>与 Authority 服务通信的 Feign Client 接口定义</h1>
  * */
 @FeignClient(
-        contextId = "AuthorityFeignClient", value = "e-commerce-authority-center"
+        contextId = "AuthorityFeignClient", value = "e-commerce-authority-center",
+//        fallback = AuthorityFeignClientFallback.class
+        fallback = AuthorityFeignClientFallbackFactory.class
 )
 public interface AuthorityFeignClient {
 
