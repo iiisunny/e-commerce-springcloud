@@ -1,5 +1,6 @@
 package com.iiisunny.ecommerce.conf;
 
+import com.alibaba.cloud.seata.web.SeataHandlerInterceptor;
 import com.iiisunny.ecommerce.filter.LoginUserInfoInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -21,6 +22,10 @@ public class IiisunnyWebMvcConfig extends WebMvcConfigurationSupport {
         // 添加用户身份统一登录拦截的拦截器
         registry.addInterceptor(new LoginUserInfoInterceptor())
                 .addPathPatterns("/**").order(0);
+
+        // Seata 传递 xid 事务 id 给其他微服务
+        // 只有这样其他服务才会写undo_log，才能实现回滚
+        registry.addInterceptor(new SeataHandlerInterceptor()).addPathPatterns("/**");
     }
 
     /**

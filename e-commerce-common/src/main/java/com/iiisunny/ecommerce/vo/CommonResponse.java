@@ -1,6 +1,7 @@
 package com.iiisunny.ecommerce.vo;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 通用响应对象定义
@@ -21,6 +22,12 @@ public class CommonResponse<T> implements Serializable {
 
     /** 泛型响应数据 */
     private T data;
+
+    public CommonResponse(int code, String message, List<T> data) {
+        this.code = code;
+        this.message = message;
+        this.data = (T) data;
+    }
 
     public Integer getCode() {
         return code;
