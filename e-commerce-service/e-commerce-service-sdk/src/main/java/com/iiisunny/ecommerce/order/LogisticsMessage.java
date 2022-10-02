@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
 public class LogisticsMessage {
 
     @ApiModelProperty(value = "用户表主键 id")
-    private Long uesrId;
+    private Long userId;
 
     @ApiModelProperty(value = "订单表主键 id")
     private Long orderId;
@@ -21,19 +21,19 @@ public class LogisticsMessage {
     @ApiModelProperty(value = "备注信息（json 存储)")
     private String extraInfo;
 
-    public LogisticsMessage(Long uesrId, Long orderId, Long addressId, String extraInfo) {
-        this.uesrId = uesrId;
+    public LogisticsMessage(Long userId, Long orderId, Long addressId, String extraInfo) {
+        this.userId = userId;
         this.orderId = orderId;
         this.addressId = addressId;
         this.extraInfo = extraInfo;
     }
 
-    public Long getUesrId() {
-        return uesrId;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUesrId(Long uesrId) {
-        this.uesrId = uesrId;
+    public void setUserId(Long uesrId) {
+        this.userId = uesrId;
     }
 
     public Long getOrderId() {
