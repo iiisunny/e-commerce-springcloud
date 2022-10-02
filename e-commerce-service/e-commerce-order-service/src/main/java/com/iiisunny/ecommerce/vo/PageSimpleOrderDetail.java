@@ -34,6 +34,9 @@ public class PageSimpleOrderDetail {
         @ApiModelProperty(value = "订单商品信息")
         private List<SingleOrderGoodsItem> goodsItems;
 
+        public SingleOrderItem() {
+        }
+
         public SingleOrderItem(Long id, UserAddress userAddress, List<SingleOrderGoodsItem> goodsItems) {
             this.id = id;
             this.userAddress = userAddress;
@@ -74,6 +77,9 @@ public class PageSimpleOrderDetail {
         @ApiModelProperty(value = "商品个数")
         private Integer count;
 
+        public SingleOrderGoodsItem() {
+        }
+
         public SingleOrderGoodsItem(SimpleGoodsInfo simpleGoodsInfo, Integer count) {
             this.simpleGoodsInfo = simpleGoodsInfo;
             this.count = count;
@@ -94,5 +100,26 @@ public class PageSimpleOrderDetail {
         public void setCount(Integer count) {
             this.count = count;
         }
+    }
+
+    public PageSimpleOrderDetail(List<SingleOrderItem> orderItems, Boolean hasMore) {
+        this.orderItems = orderItems;
+        this.hasMore = hasMore;
+    }
+
+    public List<SingleOrderItem> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<SingleOrderItem> orderItems) {
+        this.orderItems = orderItems;
+    }
+
+    public Boolean getHasMore() {
+        return hasMore;
+    }
+
+    public void setHasMore(Boolean hasMore) {
+        this.hasMore = hasMore;
     }
 }

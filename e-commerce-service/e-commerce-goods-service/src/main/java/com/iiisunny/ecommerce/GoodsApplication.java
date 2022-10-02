@@ -1,8 +1,10 @@
 package com.iiisunny.ecommerce;
 
+import com.iiisunny.ecommerce.conf.DataSourceProxyAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 /**
@@ -13,6 +15,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @EnableJpaAuditing
 @EnableDiscoveryClient
 @SpringBootApplication
+@Import(DataSourceProxyAutoConfiguration.class)
 public class GoodsApplication {
 
     public static void main(String[] args) {

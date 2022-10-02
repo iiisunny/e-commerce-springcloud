@@ -1,0 +1,20 @@
+### 创建订单
+POST http://127.0.0.1:9001/iiisunny/ecommerce-order-service/order/create-order
+Content-Type: application/json
+Accept: application/json
+e-commerce-user: xxx.xxxxxx.xxxx-xxxxx-xxxx-xxx-xxx-xxx--xx-xx-xx
+
+{
+  "userAddress": 1,
+  "orderItems": [
+    {
+      "goodsId": 1,
+      "count": 5
+    }
+  ]
+}
+
+### 查询订单
+GET http://127.0.0.1:9001/iiisunny/ecommerce-order-service/order/order-detail?page=2
+Accept: application/json
+e-commerce-user: xxx.xxxxxx.xxxx-xxxxx-xxxx-xxx-xxx-xxx--xx-xx-xx
