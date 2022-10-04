@@ -34,3 +34,8 @@
 - 用户账户微服务：用户地址接口、用户余额接口
 - 商品微服务：商品接口
 - 订单微服务：订单信息接口、创建订单接口
+
+
+![image](https://user-images.githubusercontent.com/50538193/193739259-98712ead-c239-44e0-9d6d-abca426355ff.png)
+
+![image](https://user-images.githubusercontent.com/50538193/193739311-0abd2134-8fe0-41ae-b278-14775c280b8c.png)
