@@ -29,6 +29,12 @@ public class CommonResponse<T> implements Serializable {
         this.data = (T) data;
     }
 
+    public CommonResponse(int code, String message, T s) {
+        this.code = code;
+        this.message = message;
+        this.data = (T) s;
+    }
+
     public Integer getCode() {
         return code;
     }
